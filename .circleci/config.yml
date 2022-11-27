@@ -5,6 +5,21 @@ orbs:
   node: circleci/node@4.2.0
   docker: circleci/docker@1.5.0
   terraform: circleci/terraform@3.0.0
+  
+  orbs:
+  aws-cli: circleci/aws-cli@2.0.3  
+  
+  jobs:
+  example-job:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - aws-cli/setup
+workflows:
+  example-workflow:
+    jobs:
+      - example-job  
 jobs:
   run_tests:
     docker:
